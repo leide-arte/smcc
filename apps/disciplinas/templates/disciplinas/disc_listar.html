@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<h2> Disciplinas </h2>
+{% endblock %}
+
+{% block main %} 
+<a href="{% url 'disciplinas_adicionar' %}" class="btn btn-primary">Adicionar</a>
+<table class="table-hover">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr class="font1">
+        <th scope="col">ID</th>
+        <th scope="col">Disciplina</th>
+        <th scope="col">editar\excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <tr>
+        <th scope="row">{{ object.id }}</th>
+        <td>{{object.disc_nome}} </td>
+        <td> <a href="{% url 'disciplinas_editar' object.id %}" class ="btn btn-success btn-sm mx-2">
+          <i class="far fa-edit"></i> Editar
+        </a> 
+        <a href="{% url 'disciplinas_excluir' object.id %}" class="btn btn-sm btn-danger">
+          <i class="far fa-trash-alt"></i>Excluir
+        </a></td>
+      </tr>
+      {% empty %}
+      <tr>
+        <th colspan="4"> Registros não encontrados
+        </th>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

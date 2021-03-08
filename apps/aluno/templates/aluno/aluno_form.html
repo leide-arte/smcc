@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+ Aluno
+{% endblock %}
+
+{% block main %} 
+<form method="POST">
+      {% csrf_token %}
+      {% if form.errors %}
+        {% for field in form %}
+          {% for error in field.errors %}
+            {{ field.label}} {{field.value}} {{error|escape }}
+            <br>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+     
+    <!--  {{form.as_p}}-->
+      <div class="co-sm-2 p-1"><label for="nome">{{form.alun_nome.label}}</label>
+        {{form.alun_nome}} 
+      
+      </div>
+      <div class="form-group"><label for="email">{{form.alun_email.label}}</label>
+        {{form.alun_email}}        
+      </div>
+      <div class="form-group"><label for="nome">{{form.alun_telefone.label}}</label>
+        {{form.alun_telefone}} 
+      </div>
+      <div class="form-group"><label for="nome">{{form.alun_cpf.label}}</label>
+        {{form.alun_cpf}} 
+      </div>
+      <div class="form-group"><label for="nome">{{form.alun_cidade.label}}</label>
+        {{form.alun_cidade}}
+  
+      </div>
+      
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">{{form.alun_fk_disc.label}}</label>
+        {{form.alun_fk_disc}}
+      </div>
+      <br>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success m-3"><i class="fas fa-check"></i> Salvar</button>
+      </div>    
+    </div>
+    <!--<a href="{% url 'disciplinas_adicionar' %}" class="btn btn-link">Quer adicionar uma nova disciplina? Clique aqui</a>-->
+
+
+        <!--<br>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success m-3"><i class="fas fa-check"></i> Salvar</button>
+      </div> -->   
+    </form>
+    {% endblock %}           
+      
+      
+  

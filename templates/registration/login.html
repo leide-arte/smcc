@@ -1,0 +1,63 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <style>
+    body{
+    background: url() 320px 10px / 50% no-repeat fixed content-box  rgb(216, 210, 210);   
+    
+  }
+  
+  </style>
+  
+</head>
+<body>
+  <div class="container" >
+    <a class="links" id="paracadastro"></a>
+    <a class="links" id="paralogin"></a>
+     
+    <div class="content">      
+      <!--FORMULÁRIO DE LOGIN-->
+      <div id="login">
+        <form method="POST" action=""> 
+            {% csrf_token %}
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger"> 
+                {{ error }}
+            </div>
+            {% endfor %}
+            
+          <h1><img class="mb-2" src="{% static 'img/centro_convivencia.jpeg' %}" alt="" width="70" height="70"> </h1>
+
+          {% for field in form %}
+          {% render_field field class='form-control m-3' placeholder=field.label %}
+          {% endfor %}
+
+        <p> 
+            <input type="submit" value="Logar" /> 
+          </p>
+
+         
+           
+          <!--<p> 
+            <label for="senha_cad">Sua senha</label>
+            <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="ex. 1234"/>
+          </p>
+           
+          
+           
+          <p> 
+            <input type="submit" value="Logar" /> 
+          </p>
+           
+        </form>-->
+      </div>
+ 
+    
+          
+</body>
+</html>

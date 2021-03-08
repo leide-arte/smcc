@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<div class="text-center mt-5 container">
+  <div class="alert alert-danger font shadow">Excluir disciplina</div>
+{% endblock %}
+{% block main %} 
+<form method="POST">
+      {% csrf_token %}
+      <p class="font1">você tem certeza que quer apagar </p>
+      {{object.disc_nome}}?
+      <button type="submit" class="btn font btn text-white" style=" background-color:red;">Deletar</button>
+  </form>
+{% endblock %}
+</div>
